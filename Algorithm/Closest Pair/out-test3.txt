@@ -1,0 +1,21 @@
+Version 1:
+Number of pt: 6.0
+closest pair: [[1.0, 0.01], [1.0, 1.0]]
+distance btw: 0.99
+time: 6.008148193359375e-05s
+
+
+Version 2:
+Number of pt: 6.0
+closest pair: ([1.0, 0.01], [1.0, 1.0])
+distance btw: 0.99
+time: 5.245208740234375e-05s
+
+
+Version 3:
+Number of pt: 6.0
+closest pair: ([1.0, 0.01], [1.0, 1.0])
+distance btw: 0.99
+time: 4.8160552978515625e-05s
+
+

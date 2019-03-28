@@ -1,0 +1,21 @@
+Version 1:
+Number of pt: 1.0
+closest pair: []
+distance btw: inf
+time: 0.00013685226440429688s
+Error: only one point, cannot find closest pair.
+
+Version 2:
+Number of pt: 1.0
+closest pair: []
+distance btw: inf
+time: 0.0005941390991210938s
+Error: only one point, cannot find closest pair.
+
+Version 3:
+Number of pt: 1.0
+closest pair: []
+distance btw: inf
+time: 3.933906555175781e-05s
+Error: only one point, cannot find closest pair.
+
