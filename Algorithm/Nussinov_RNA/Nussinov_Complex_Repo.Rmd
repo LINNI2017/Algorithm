@@ -1,0 +1,96 @@
+---
+title: "Nussinov Complexity Report"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Nussinov algorithm analysis with graph
+```{r}
+library(basicTrendline)
+library(spatialEco)
+```
+
+```{r}
+genGraph <- function(file){
+  data=read.csv(file,sep="\t")
+  data=data[order(data$length),]
+  attach(data)
+  par(mfrow=c(2,2)) 
+  
+  lm1<-lm(total ~ poly(length, 3, raw=TRUE))
+  lm2<-lm(nus ~ poly(length, 3, raw=TRUE))
+  lm3<-lm(trace ~ poly(length, 2, raw=TRUE))
+  
+  plot(length, total, pch=20,xlab="length",ylab="time",
+       main="length vs total time O(n^3)")
+  lines(length,lm1$fitted.values,col=2,lwd=2)
+
+  plot(length, nus, pch=20,xlab="length",ylab="time",
+       main="length vs nussinov time O(n^3)")
+  lines(length,lm2$fitted.values,col=2,lwd=2)
+
+  trendline(length, trace, model='line3P',
+            main="length vs traceback time O(n^2)",
+            xlab="length",ylab="time",pch=20)
+  
+  plot(length, total, pch=20,xlab="length",ylab="time",
+       main="length vs time")
+  lines(length,lm1$fitted.values,col=2,lwd=10)
+  lines(length,lm2$fitted.values,col=3,lwd=2)
+  lines(length,lm3$fitted.values,col=4,lwd=2)
+  legend("topleft", legend=c("total", "nussinov", "traceback"),
+         col=c(2,3,4), lty=1,lwd=2,cex=1,bty = "n")
+  detach(data)
+  print(summary(lm1))
+  print(summary(lm2))
+  print(summary(lm3))
+}
+```
+
+```{r}
+genGraph2 <- function(file){
+  data=read.csv(file,sep="\t")
+  data=data[order(data$length),]
+  attach(data)
+  par(mfrow=c(2,2)) 
+  
+  len=seq(from=min(length),to=max(length),by=16)
+  
+  lm1<-lm(total ~ poly(length, 3, raw=TRUE))
+  cu1=coef(lm1)
+  time1=cu1[1]+cu1[2]*len+cu1[3]*len^2+cu1[4]*len^3
+  plot(length, total, pch=20,xlab="length",ylab="time",
+       main="length vs total time O(n^3)")
+  lines(len, time1, lty=1, lwd=2, col="blue") 
+  
+  lm2<-lm(nus ~ poly(length, 3, raw=TRUE))
+  cu2=coef(lm2)
+  time2=cu2[1]+cu2[2]*len+cu1[3]*len^2+cu1[4]*len^3
+  plot(length, total, pch=20,xlab="length",ylab="time",
+       main="length vs nussinov time O(n^3)")
+  lines(len, time2, lty=1, lwd=2, col="blue") 
+  
+  trendline(length, trace, model='line3P',
+            main="length vs traceback time O(n^2)",
+            xlab="length",ylab="time",pch=20)
+  
+  lm3<-lm(trace ~ poly(length, 2, raw=TRUE))
+  
+  plot(length, total, pch=20,xlab="length",ylab="time",
+       main="length vs time")
+  lines(len,time1,col=2,lwd=10)
+  lines(len,time2,col=3,lwd=2)
+  lines(length,lm3$fitted.values,col=4,lwd=2)
+  legend("topleft", legend=c("total", "nussinov", "traceback"),
+         col=c(2,3,4), lty=1,lwd=2,cex=1,bty = "n")
+  detach(data)
+}
+```
+
+```{r}
+genGraph("/Users/linni/Documents/GitHub/Python-R/Algorithm/Nussinov_RNA/testcase/test16-512.txt")
+genGraph2("/Users/linni/Documents/GitHub/Python-R/Algorithm/Nussinov_RNA/testcase/test4-12power.txt")
+```

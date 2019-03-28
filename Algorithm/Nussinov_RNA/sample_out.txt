@@ -1,0 +1,23 @@
+AGCUCAUAUGGC
+.((.(....)))
+Length = 12, Pairs = 3, Time = 0.00029969215393066406 sec
+0	0	0	0	0	0	1	1	1	1	2	3
+0	0	0	0	0	0	0	0	0	1	2	3
+0	0	0	0	0	0	0	0	0	1	2	2
+0	0	0	0	0	0	0	0	0	1	1	1
+0	0	0	0	0	0	0	0	0	1	1	1
+0	0	0	0	0	0	0	0	0	0	0	0
+1	0	0	0	0	0	0	0	0	0	0	0
+1	0	0	0	0	0	0	0	0	0	0	0
+1	0	0	0	0	0	0	0	0	0	0	0
+1	1	1	1	1	0	0	0	0	0	0	0
+2	2	2	1	1	0	0	0	0	0	0	0
+3	3	2	1	1	0	0	0	0	0	0	0
+
+GCCCACCUUCGAAAAGACUGGAUGACCAUGGGCCAUGAUU
+((((((.((....)))..(((....)))))))).(....)
+Length = 40, Pairs = 12, Time = 0.011167049407958984 sec
+
+GCUCCAGUGGCCUAAUGGAUAUGGCUUUGGACUUCUAAUCCAAAGGUUGCGGGUUCGAGUCCCGUCUGGAGUA
+.((((((.((((((.....)).))(((((((.(....))))))))((..((....)))..)))..))))))..
+Length = 73, Pairs = 24, Time = 0.047872066497802734 sec
